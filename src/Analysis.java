@@ -1,5 +1,7 @@
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,9 +11,13 @@ import java.nio.file.Paths;
 import java.util.*;
 public class Analysis {
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 		File data = new File("tweets.csv");
 		Scanner sc = new Scanner(data);
+		
+		//write to the file
+		PrintWriter writeTweet = new PrintWriter("tweetOnly.txt", "UTF-8");
+		
 		
 		//checking tweet
 		int tweetNumber = 0;
@@ -19,7 +25,7 @@ public class Analysis {
 		{
 			String tweet = sc.nextLine();
 			String[] twArr = tweet.split(",");
-			System.out.println(tweetNumber +". Tweet : "+ twArr[twArr.length-1]);
+			writeTweet.println(tweetNumber +". Tweet : "+ twArr[twArr.length-1]+"\n");
 			tweetNumber++;
 		}
 
