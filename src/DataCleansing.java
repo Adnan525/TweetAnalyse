@@ -20,7 +20,7 @@ public class DataCleansing {
 				if(item.contains(punc))
 				{
 //					int index = item.indexOf(punc);
-					item.replace(punc, "");
+					item = item.replace(punc, "");
 //					String[] fixPunc = item.split(punc);
 //					for(int i =0; i <= fixPunc.length - 1; i++)
 //					{
@@ -43,7 +43,7 @@ public class DataCleansing {
 		{
 			for(String stopItem : stopWords)
 			{
-				if(item.equals(" ") || item.contains("http://") || item.contains("https://"))
+				if(item.equals(" ") || item.contains("http"))
 				{
 					item = "";
 				}
@@ -56,4 +56,15 @@ public class DataCleansing {
 		}
 		return temp;
 	}
+	
+	//test
+//	public static void main(String[] args)
+//	{
+//		String str = "Adnaan.";
+//		System.out.println(str);
+//		str = str.toLowerCase();
+//		String st = str.replace(".", " ");
+//		System.out.println(st);
+//		
+//	}
 }
