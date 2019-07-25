@@ -1,6 +1,6 @@
 
 public class DataCleansing {
-	static String[] stopWords = {"am", "is", "are", "was", "were", "it's", "a", "an", "the", "so", "at", "with"};
+	static String[] stopWords = {"am", "is", "are", "was", "were", "it's", "a", "an", "the", "so", "at", "with", "in"};
 	static String punctuations = ".,!:;";
 	
 	//replace punctuations
@@ -10,6 +10,9 @@ public class DataCleansing {
 		String temp = "";
 		for(String item : test)
 		{
+			//change to lower case
+			item = item.toLowerCase();
+			
 			if(item.contains(punctuations))
 			{
 				item = "";
