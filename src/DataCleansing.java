@@ -1,7 +1,9 @@
 
 public class DataCleansing {
-	static String[] stopWords = {"am", "is", "are", "was", "were", "it's", "a", "an", "the", "so", "at", "with", "in"};
-	static String punctuations = ".,!:;";
+	static String[] stopWords = {"am", "is", "are", "was", "were", "it's", "a", "an", "the", "so", 
+			"at", "with", "in", "english", "translation:", "of", "please"};
+	static String[] punctuations = {".", ",", "!", ":", "'", "\"", ";"};
+	
 	
 	//replace punctuations
 	public static String repPunc(String str)
@@ -13,9 +15,19 @@ public class DataCleansing {
 			//change to lower case
 			item = item.toLowerCase();
 			
-			if(item.contains(punctuations))
+			for(String punc : punctuations)
 			{
-				item = "";
+				if(item.contains(punc))
+				{
+//					int index = item.indexOf(punc);
+					item.replace(punc, "");
+//					String[] fixPunc = item.split(punc);
+//					for(int i =0; i <= fixPunc.length - 1; i++)
+//					{
+//						item = fixPunc[i];
+//					}
+					
+				}
 			}
 			temp+=item +" ";
 		}
@@ -31,7 +43,7 @@ public class DataCleansing {
 		{
 			for(String stopItem : stopWords)
 			{
-				if(item.equals(" "))
+				if(item.equals(" ") || item.contains("http://") || item.contains("https://"))
 				{
 					item = "";
 				}

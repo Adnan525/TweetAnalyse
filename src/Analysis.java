@@ -26,8 +26,17 @@ public class Analysis {
 			String wholeTweet = sc.nextLine();
 			String[] twArr = wholeTweet.split(",");
 			String tweet = DataCleansing.clean(twArr[twArr.length-1]);
-			writeTweet.println(tweetNumber +". Tweet : "+ tweet +"\n");
-			tweetNumber++;
+			if(tweet.isEmpty() || tweet.equals(" "))
+			{
+				//do nothing
+				//System.out.println("empty tweet");
+			}
+			else
+			{
+				writeTweet.println(tweetNumber +". Tweet : "+ tweet +"\n");
+				tweetNumber++;
+			}
+			
 		}
 
 	}
