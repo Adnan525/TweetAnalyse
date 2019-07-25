@@ -47,6 +47,7 @@ public class Analysis {
 	}
 	
 	public static void putTweetInList(String T) {
+		T=T.toLowerCase();
 		if(T.isEmpty() || T.equals(" "))
 			return;
 		else {
