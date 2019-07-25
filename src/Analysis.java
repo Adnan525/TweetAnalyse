@@ -9,8 +9,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import java.util.*;
-public class Analysis {
 
+import org.jvnet.hk2.component.MultiMap;
+public class Analysis {
+	static MultiMap tweets = new MultiMap<Character,String>();
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 		File data = new File("tweets.csv");
 		Scanner sc = new Scanner(data);
@@ -26,6 +28,8 @@ public class Analysis {
 			String wholeTweet = sc.nextLine();
 			String[] twArr = wholeTweet.split(",");
 			String tweet = DataCleansing.clean(twArr[twArr.length-1]);
+			
+			
 			if(tweet.isEmpty() || tweet.equals(" "))
 			{
 				//do nothing
@@ -33,6 +37,7 @@ public class Analysis {
 			}
 			else
 			{
+				putTweetInList(tweet);
 				writeTweet.println(tweetNumber +". Tweet : "+ tweet +"\n");
 				tweetNumber++;
 			}
@@ -40,5 +45,16 @@ public class Analysis {
 		}
 
 	}
-
+	
+	public static void putTweetInList(String T) {
+		if(T.isEmpty() || T.equals(" "))
+			return;
+		else {
+			int i = T.indexOf(" ");
+			Character c = T.charAt(0);
+			tweets.add(c,T.substring(0,i));
+			putTweetInList(T.substring(i));
+		}
+		
+	}
 }
