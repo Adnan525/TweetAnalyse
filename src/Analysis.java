@@ -23,9 +23,10 @@ public class Analysis {
 		int tweetNumber = 0;
 		while(sc.hasNextLine())
 		{
-			String tweet = sc.nextLine();
-			String[] twArr = tweet.split(",");
-			writeTweet.println(tweetNumber +". Tweet : "+ twArr[twArr.length-1]+"\n");
+			String wholeTweet = sc.nextLine();
+			String[] twArr = wholeTweet.split(",");
+			String tweet = DataCleansing.clean(twArr[twArr.length-1]);
+			writeTweet.println(tweetNumber +". Tweet : "+ tweet +"\n");
 			tweetNumber++;
 		}
 
