@@ -1,4 +1,4 @@
-
+//not using now
 public class DictionaryElement {
 
 	String word = "";
