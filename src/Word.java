@@ -1,4 +1,10 @@
+import java.util.HashMap;
 
-public class Word {
+public class Word extends HashMap<String,Integer> {
+
+	public Word() {
+	super();
+	
+	}
 
 }

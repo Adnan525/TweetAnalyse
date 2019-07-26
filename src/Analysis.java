@@ -12,7 +12,7 @@ import java.util.*;
 
 import org.jvnet.hk2.component.MultiMap;
 public class Analysis {
-	static MultiMap tweets = new MultiMap<Character,String>();
+	static wordIntensity tweets = new wordIntensity<Character,Word>();
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 		File data = new File("tweets.csv");
 		Scanner sc = new Scanner(data);
