@@ -14,6 +14,8 @@ import org.jvnet.hk2.component.MultiMap;
 public class Analysis {
 	static wordIntensity tweets = new wordIntensity();
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+		for(Character i = 97; i<122;i++) tweets.put(i,"");
+		
 		File data = new File("tweets.csv");
 		Scanner sc = new Scanner(data);
 		
@@ -53,7 +55,7 @@ public class Analysis {
 		else {
 			int i = T.indexOf(" ");
 			Character c = T.charAt(0);
-			tweets.add(c,T.substring(0,i));
+			tweets.put(c,T.substring(0,i));
 			putTweetInList(T.substring(i));
 		}
 		

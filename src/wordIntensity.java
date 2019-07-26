@@ -17,7 +17,7 @@ public class wordIntensity extends LinkedHashMap<Character,Word> {
 		else
 			temp.put(value, 1);
 		return value;
-		
 	}
+	
 
 }
