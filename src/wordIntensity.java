@@ -4,13 +4,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class wordIntensity extends LinkedHashMap {
+public class wordIntensity extends LinkedHashMap<Character,Word> {
 
 	
 	@Override
-	public Object put(Object key, Object value) {
+	public void put(Character c, Word value) {
 		// TODO Auto-generated method stub
-		return null;
+	
 	}
 
 
