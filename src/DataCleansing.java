@@ -1,7 +1,7 @@
 
 public class DataCleansing {
 	static String[] stopWords = {"am", "is", "are", "was", "were", "it's", "a", "an", "the", "so", 
-			"at", "with", "in", "english", "translation:", "of", "please"};
+			"at", "with", "in", "english", "translation:", "of", "please", "i", "he", "very"};
 	static String[] punctuations = {".", ",", "!", ":", "'", "\"", ";"};
 	
 	

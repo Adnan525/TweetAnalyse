@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class Analysis {
-	static Dictionary tweets = new Dictionary();
+	static Dictionary dataset = new Dictionary();
 	
 	public static void makeDictionary(Dictionary hash, String str)
 	{
@@ -22,8 +22,25 @@ public class Analysis {
 			hash.addWords(s.charAt(0), s);
 		}
 	}
+	
+	public static int check(Dictionary dataset, String str)
+	{
+		int answer = 0;
+		String[] words = str.split(" ");
+		for(String st : words)
+		{
+			for(DictionaryElement w : dataset.get(st.charAt(0)))
+			{
+				if(w.word.equals(st))
+				{
+					answer+=w.intensity;
+				}
+			}
+		}
+		return answer/words.length-1;
+	}
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-		
+	//	index
 		//dictionary has a to z
 		
 		File data = new File("tweets.csv");
@@ -49,7 +66,7 @@ public class Analysis {
 			}
 			else
 			{
-				makeDictionary(tweets, tweet);
+				makeDictionary(dataset, tweet);
 				//writeTweet.println(tweetNumber +". Tweet : "+ tweet +"\n");
 				writeTweet.println(tweet +"\n");
 				//tweetNumber++;
@@ -57,7 +74,25 @@ public class Analysis {
 			
 		}
 		
-		//test
+		//main test
+		while(true)
+		{
+			Scanner keyboard = new Scanner(System.in);
+			System.out.println("Type your sentence in, no signs/punctuations allowed and all the letter have to be lowercase.");
+			String line = keyboard.nextLine();
+			
+			if(line.equals("exit"))
+			{
+				System.out.println("Good Bye!");
+				break;
+			}
+			
+			System.out.println(check(dataset, line));
+			
+		}
+		
+
+		
 
 
 	}
@@ -71,7 +106,7 @@ public class Analysis {
 //			int i = T.indexOf(" ");
 //			if(i==0) i = T.length()-1;
 //			Character c = T.charAt(0);
-//			tweets.put(c,T.substring(0,i));
+//			dataset.put(c,T.substring(0,i));
 //			putTweetInList(T.substring(i));
 //		}
 //		
