@@ -10,11 +10,11 @@ import java.nio.file.Paths;
 
 import java.util.*;
 
-import org.jvnet.hk2.component.MultiMap;
 public class Analysis {
-	static wordIntensity tweets = new wordIntensity();
+	static Dictionary tweets = new Dictionary();
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-		for(Character i = 97; i<122;i++) tweets.put(i,"");
+		
+		for(Character i = 97; i<=122;i++) tweets.put(i," ");
 		
 		File data = new File("tweets.csv");
 		Scanner sc = new Scanner(data);
@@ -46,6 +46,13 @@ public class Analysis {
 			}
 			
 		}
+		
+		//test
+		Set ch = tweets.keySet();
+		for(Object k : ch)
+		{
+			System.out.println(k.toString());
+		}
 
 	}
 	
@@ -55,6 +62,7 @@ public class Analysis {
 			return;
 		else {
 			int i = T.indexOf(" ");
+			if(i==0) i = T.length()-1;
 			Character c = T.charAt(0);
 			tweets.put(c,T.substring(0,i));
 			putTweetInList(T.substring(i));
