@@ -12,9 +12,19 @@ import java.util.*;
 
 public class Analysis {
 	static Dictionary tweets = new Dictionary();
+	
+	public static void makeDictionary(Dictionary hash, String str)
+	{
+		String[] temp = str.split(" ");
+		for(String s : temp)
+		{
+			if(!s.isEmpty())
+			hash.addWords(s.charAt(0), s);
+		}
+	}
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 		
-		for(Character i = 97; i<=122;i++) tweets.put(i," ");
+		//dictionary has a to z
 		
 		File data = new File("tweets.csv");
 		Scanner sc = new Scanner(data);
@@ -39,7 +49,7 @@ public class Analysis {
 			}
 			else
 			{
-				putTweetInList(tweet);
+				makeDictionary(tweets, tweet);
 				//writeTweet.println(tweetNumber +". Tweet : "+ tweet +"\n");
 				writeTweet.println(tweet +"\n");
 				//tweetNumber++;
@@ -48,25 +58,22 @@ public class Analysis {
 		}
 		
 		//test
-		Set ch = tweets.keySet();
-		for(Object k : ch)
-		{
-			System.out.println(k.toString());
-		}
+
 
 	}
 	
-	public static void putTweetInList(String T) {
-		T=T.toLowerCase();
-		if(T.isEmpty() || T.equals(" "))
-			return;
-		else {
-			int i = T.indexOf(" ");
-			if(i==0) i = T.length()-1;
-			Character c = T.charAt(0);
-			tweets.put(c,T.substring(0,i));
-			putTweetInList(T.substring(i));
-		}
-		
-	}
+	
+//	public static void putTweetInList(String T) {
+//		T=T.toLowerCase();
+//		if(T.isEmpty() || T.equals(" "))
+//			return;
+//		else {
+//			int i = T.indexOf(" ");
+//			if(i==0) i = T.length()-1;
+//			Character c = T.charAt(0);
+//			tweets.put(c,T.substring(0,i));
+//			putTweetInList(T.substring(i));
+//		}
+//		
+//	}
 }

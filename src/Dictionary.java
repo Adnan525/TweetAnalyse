@@ -22,14 +22,20 @@ public class Dictionary extends LinkedHashMap<Character,ArrayList<DictionaryElem
 		for(int i = 0; i <= al.size()-1; i++)
 		{
 			if(al.get(i).word.equals(str))
+			{
 				current = i;
 				return true;
+			}
 		}
 		return false;
 	}
 	
 	public void addWords(Character c, String str) {
 		ArrayList<DictionaryElement> temp = this.get(c);
+		if(temp == null)
+		{
+			return;
+		}
 		if(Dictionary.checkExist(temp, str))
 				{
 					temp.get(current).intensity+=1;
