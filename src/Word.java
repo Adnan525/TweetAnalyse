@@ -4,7 +4,6 @@ public class Word extends HashMap<String,Integer> {
 
 	public Word() {
 	super();
-	
 	}
 
 }

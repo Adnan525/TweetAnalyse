@@ -38,8 +38,9 @@ public class Analysis {
 			else
 			{
 				putTweetInList(tweet);
-				writeTweet.println(tweetNumber +". Tweet : "+ tweet +"\n");
-				tweetNumber++;
+				//writeTweet.println(tweetNumber +". Tweet : "+ tweet +"\n");
+				writeTweet.println(tweet +"\n");
+				//tweetNumber++;
 			}
 			
 		}
