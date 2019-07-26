@@ -7,16 +7,16 @@ import java.util.Set;
 public class wordIntensity extends LinkedHashMap<Character,Word> {
 
 	
-	@Override
-	public void put(Character c, Word value) {
-		// TODO Auto-generated method stub
-	
-	}
-
-
-	@Override
-	public void putAll(Map m) {
-		// TODO Auto-generated method stub
+	public String put(Character c, String value) {
+		HashMap<String,Integer> temp = this.get(c);
+		//Set indWords = temp.keySet();
+		if(temp.containsKey(value))
+		{
+			temp.put(value,temp.get(value)+1);
+		}
+		else
+			temp.put(value, 1);
+		return value;
 		
 	}
 
